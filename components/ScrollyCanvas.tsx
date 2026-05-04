@@ -69,9 +69,8 @@ function drawCoverFrame(
   const sw = iw * scale;
   const sh = ih * scale;
 
-  // On mobile (portrait), shift the focus towards the right (where the disc is)
-  // On desktop (landscape), keep it perfectly centered
-  const alignX = cw < ch ? 0.75 : 0.5;
+  // Keep the image perfectly centered on both mobile and desktop to prevent the logo from getting cut off
+  const alignX = 0.5;
 
   const ox = (cw - sw) * alignX;
   const oy = (ch - sh) / 2;
