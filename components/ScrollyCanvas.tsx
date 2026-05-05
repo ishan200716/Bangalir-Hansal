@@ -65,16 +65,40 @@ function drawCoverFrame(
   const ih = img.naturalHeight || img.height;
   if (!iw || !ih) return;
 
-  const scale = Math.max(cw / iw, ch / ih);
-  const sw = iw * scale;
-  const sh = ih * scale;
+  const isMobile = cw < 768;
+  const isPortrait = ch > cw;
 
-  // Keep the image perfectly centered on both mobile and desktop to prevent the logo from getting cut off
-  const alignX = 0.5;
+  if (isMobile && isPortrait) {
+    // On mobile portrait: crop to show only the spinning disc.
+    // The disc center is at roughly 57% from the left and 50% from the top of the source image.
+    const discCenterX = 0.63;
+    const discCenterY = 0.50;
+    // Use the full height to ensure the entire disc fits in the square crop
+    const discRadius = 1.0;
 
-  const ox = (cw - sw) * alignX;
-  const oy = (ch - sh) / 2;
-  ctx.drawImage(img, ox, oy, sw, sh);
+    // Calculate a source crop rect centered on the disc
+    const cropSize = ih * discRadius; // use image height as reference since disc is roughly square
+    const srcSize = Math.min(cropSize, Math.min(iw, ih));
+
+    const sx = Math.max(0, Math.min(iw * discCenterX - srcSize / 2, iw - srcSize));
+    const sy = Math.max(0, Math.min(ih * discCenterY - srcSize / 2, ih - srcSize));
+
+    // Draw the cropped disc area to fill the canvas, centered
+    const destSize = Math.min(cw * 0.9, ch * 0.55); // fit within 90% width or 55% height
+    const dx = (cw - destSize) / 2;
+    const dy = (ch - destSize) / 2 - ch * 0.05; // shift slightly up to leave room for text
+
+    ctx.drawImage(img, sx, sy, srcSize, srcSize, dx, dy, destSize, destSize);
+  } else {
+    // Desktop / landscape: standard cover fit
+    const scale = Math.max(cw / iw, ch / ih);
+    const sw = iw * scale;
+    const sh = ih * scale;
+
+    const ox = (cw - sw) * 0.5;
+    const oy = (ch - sh) / 2;
+    ctx.drawImage(img, ox, oy, sw, sh);
+  }
 }
 
 export default function ScrollyCanvas() {

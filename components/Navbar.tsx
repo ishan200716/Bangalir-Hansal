@@ -31,13 +31,17 @@ export default function Navbar() {
           : "py-6"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        {/* Logo */}
-        <a href="#" className="flex flex-col leading-none shrink-0 max-w-[70vw]" data-hover>
-          <span className="font-bengali text-lg md:text-xl font-bold text-[#D4A017] tracking-wide truncate">
+      {/* Mobile layout: 3-column grid so logo is centered */}
+      <div className="max-w-7xl mx-auto px-4 md:px-6 grid grid-cols-[40px_1fr_40px] md:flex items-center md:justify-between">
+        {/* Empty spacer on mobile left (matches hamburger width) */}
+        <div className="md:hidden" />
+
+        {/* Logo – centered on mobile, left-aligned on desktop */}
+        <a href="#" className="flex flex-col items-center md:items-start leading-none shrink-0 justify-self-center md:justify-self-start" data-hover>
+          <span className="font-bengali text-lg md:text-xl font-bold text-[#D4A017] tracking-wide whitespace-nowrap">
             বাঙালির হেঁসেল
           </span>
-          <span className="font-ui text-[7px] md:text-[10px] tracking-[0.15em] md:tracking-[0.25em] text-[#C8B49A]/60 uppercase mt-0.5 truncate">
+          <span className="font-ui text-[8px] md:text-[10px] tracking-[0.15em] md:tracking-[0.25em] text-[#C8B49A]/60 uppercase mt-0.5 whitespace-nowrap">
             Bengali Restaurant · Serampore
           </span>
         </a>
@@ -55,14 +59,12 @@ export default function Navbar() {
               <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-[#D4A017] group-hover:w-full transition-all duration-300" />
             </a>
           ))}
-
-
         </nav>
 
         {/* Mobile toggle */}
         <button
           onClick={() => setOpen(!open)}
-          className="md:hidden flex flex-col gap-1.5 p-2"
+          className="md:hidden flex flex-col gap-1.5 p-2 justify-self-end"
           aria-label="Toggle menu"
         >
           <span className={`w-6 h-px bg-[#D4A017] transition-all duration-300 ${open ? "rotate-45 translate-y-2" : ""}`} />
