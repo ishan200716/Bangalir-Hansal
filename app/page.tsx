@@ -4,7 +4,6 @@ import { useEffect, useRef } from "react";
 import Navbar from "@/components/Navbar";
 import ScrollyCanvas from "@/components/ScrollyCanvas";
 import About from "@/components/About";
-import MenuHighlights from "@/components/MenuHighlights";
 import Gallery from "@/components/Gallery";
 import Testimonials from "@/components/Testimonials";
 
@@ -64,7 +63,6 @@ export default function Home() {
       <Navbar />
       <ScrollyCanvas />
       <About />
-      <MenuHighlights />
       <Gallery />
       <Testimonials />
 

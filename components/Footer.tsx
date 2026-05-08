@@ -83,13 +83,13 @@ export default function Footer() {
                 Serampore, Hooghly<br />
                 West Bengal – 712201
               </p>
-              <a href="tel:+91XXXXXXXXXX" data-hover
+              <a href="tel:+917980554591" data-hover
                  className="flex items-center gap-2 hover:text-[#D4A017] transition-colors">
-                📞 +91 XXXXX XXXXX
+                📞 +91 79805 54591
               </a>
-              <a href="mailto:hello@bangalirhansal.in" data-hover
+              <a href="mailto:bangalirhansal@gmail.com" data-hover
                  className="flex items-center gap-2 hover:text-[#D4A017] transition-colors">
-                ✉ hello@bangalirhansal.in
+                ✉ bangalirhansal@gmail.com
               </a>
             </address>
 

@@ -5,7 +5,6 @@ import { motion, useScroll, useTransform } from "framer-motion";
 
 const links = [
   { label: "আমাদের গল্প", href: "#about" },
-  { label: "মেনু",        href: "#menu"  },
   { label: "গ্যালারি",   href: "#gallery" },
   { label: "যোগাযোগ",   href: "#contact" },
 ];
